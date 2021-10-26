@@ -1,0 +1,47 @@
+notas_rock = [5, 1, 4, 0, 2, 5, 2, 1, 0, 5, 5, 3, 5, 2, 5, 5, 3, 5, 4, 4]
+notas_pop = [3, 2, 5, 1, 2, 1, 4, 1, 5, 0, 4, 2, 1, 2, 5, 2, 4, 4, 0, 1]
+
+
+#Função que realiza a contagem das notas
+def musica(lista):
+    
+    #Dicionário para categorização das notas
+    conceito_musica = {
+        'boa': 0,
+        'mediana': 0,
+        'ruim': 0
+        }
+
+    for nota in lista:
+        if(nota ==0 or nota ==1):
+            conceito_musica['ruim'] += 1
+        elif(nota ==2 or nota ==3):
+            conceito_musica['mediana'] += 1
+        elif(nota ==4 or nota ==5):
+            conceito_musica['boa'] += 1
+
+    return(conceito_musica) #Retornando o dicionario contendo os conceitos e a contagem
+
+
+conceito_rock = musica(notas_rock)
+conceito_pop = musica(notas_pop)
+
+
+#---------------------musicas categorizadas-----------------------------
+print('----Conceito das músicas por gênero----')
+print('Rock: {}'.format(conceito_rock))
+print('Pop:  {}\n'.format(conceito_pop))
+
+#Verificando se existe alguma música de rock mediana
+if(conceito_rock['mediana'] > 0):
+  print('-> Existe(m) {} músicas de rock medianas\n'.format(conceito_rock['mediana']))
+else:
+  print('-> Não existem musicas de rock medianas\n')
+
+# Verificando se todas as musicas de pop são boas
+if(conceito_pop['boa'] == len(notas_pop)):
+  print('-> Todas as músicas de pop são boas')
+else:
+  print('-> Apenas {} músicas de pop são boas'.format(conceito_pop['boa']))
+
+
